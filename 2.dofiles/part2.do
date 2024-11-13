@@ -25,9 +25,10 @@
     * 2.- Set Working Directory
         ** 2.1.- root
         ** 2.2.- global
-    * 3.- Clean and create variables
-    * 4.- 
-    * 5.- 
+    * 3.- Set latin code
+    * 4.- Module 1.- Clean and create variables
+    * 5.- Module 
+    * 6.- 
 }
 
 
@@ -61,6 +62,7 @@
         global tables   "${results}/6.1.tables"
         global figures  "${results}/6.2.figures"
         global logfiles "${results}/6.3.log_files"
+        global maps     "${results}/6.4.maps"
     }
 
 }
@@ -68,25 +70,35 @@
 
 
 
-{ // 3.- Clean and create variables
-    
+
+{ // 3.- Set latin code 
     cd "${root}/3.raw_data"
     unicode analyze *               // Note.- There must be no data in memory
     unicode encoding set ISO-8859-1 // Latin code
     unicode translate *
+}
+
+
+
+
+
+{ // 4.- Module 1.- Clean and create variables
     
-    { // 3.1.- Module 1.- Characteristics of housing and home
-        use "${raw}/enaho01-2023-100.dta", clear 
-        browse 
+    use "${raw}/enaho01-2023-100.dta", clear 
+    browse 
+
+    { // 3.1.- sort: sort the observations from smallest to largest or in ascending order.
+        codebook conglome             // cluster number
+        codebook vivienda             // housing selection number
+        codebook hogar                // sequential home number
+        sort conglome vivienda hogar  
     }
 
-    { // 3.2.- Module 2.- 
-
+    { // 3.2.- result: final result of the survey
+        codebook result
+        fre      result
+        keep if (result == 1 | result == 2)
     }
-	
-	{ // 3.3.- Module 3.- 
-	
-	}
 
 }
 

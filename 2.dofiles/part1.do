@@ -69,6 +69,7 @@
             cap !mkdir "6.results/6.1.tables"
             cap !mkdir "6.results/6.2.figures"
             cap !mkdir "6.results/6.3.log_files"
+            cap !mkdir "6.results/6.4.maps"
         cap !mkdir "7.reports"
             cap !mkdir "7.reports/7.1.drafts"
             cap !mkdir "7.reports/7.2.final"
@@ -106,21 +107,21 @@
         unzipfile "${root}/906-Module`module'.zip"                                 , replace 
         erase     "${root}/906-Module`module'.zip"
         // 3.1.- At the level of individuals
-            // Module 2.- Características de los Miembros del Hogar
+            // Module 2.- Characteristics of household members
                 if "`module'" == "02" {
                     foreach files in `files_02' {
                         copy "${root}/906-Modulo02/`files'" "${raw}/`files'", replace
                         shell rmdir "${root}/906-Modulo02" /s /q
                     }
                 }
-            // Module 3.- Educación
+            // Module 3.- Education
                 if "`module'" == "03" {
                     foreach files in `files_03' {
                         copy "${root}/906-Modulo03/`files'" "${raw}/`files'", replace
                         shell rmdir "${root}/906-Modulo03" /s /q
                     }
                 }
-            // Module 5.- Empleo e Ingresos
+            // Module 5.- Employment and income
                 if "`module'" == "05" {
                     foreach files in `files_05' {
                         copy "${root}/906-Modulo05/`files'" "${raw}/`files'", replace
@@ -128,28 +129,28 @@
                     }
                 }
         // 3.2.- At the household level
-            // Module 1.-   Características de la Vivienda y del Hogar
+            // Module 1.- Characteristics of housing and home
                 if "`module'" == "01" {
                     foreach files in `files_01' {
                         copy "${root}/906-Modulo01/`files'" "${raw}/`files'", replace
                         shell rmdir "${root}/906-Modulo01" /s /q
                     }
                 }
-            // Module 11.- Servicios a la Vivienda
+            // Module 11.- Housing Services
                 if "`module'" == "11" {
                     foreach files in `files_11' {
                         copy "${root}/906-Modulo11/`files'" "${raw}/`files'", replace
                         shell rmdir "${root}/906-Modulo11" /s /q
                     }
                 }
-            // Module 34.- Sumarias (Variables Calculadas)
+            // Module 34.- Summary (Calculated Variables)
                 if "`module'" == "34" {
                     foreach files in `files_34' {
                         copy "${root}/906-Modulo34/`files'" "${raw}/`files'", replace
                         shell rmdir "${root}/906-Modulo34" /s /q
                     }
                 }
-            // Module 37.- Programas Sociales
+            // Module 37.- Social programs
                 if "`module'" == "37" {
                     foreach files in `files_37' {
                         copy "${root}/906-Modulo37/`files'" "${raw}/`files'", replace
@@ -158,7 +159,6 @@
                 }
     }
 }
-
 
 
 
